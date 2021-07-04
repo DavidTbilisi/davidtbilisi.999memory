@@ -5042,7 +5042,27 @@ let data_arr = [
             random = parseInt(this.random(0,5));
             return [this.options[random], random]
         },
+        check(event){
+
+
+          if (event.target.alt == this.choosen[0]){
+            event.target.style.border = "2px solid green";
+            setTimeout(() => {
+              this.yesHendler()
+            }, 500);
+          } else {
+            this.err++
+            event.target.style.border = "2px solid red";
+          }
+        },
+
+
         again(){
+          document.querySelectorAll('img').forEach((el)=>{
+            el.style.border = "0px"
+          })
+
+
           for (let i = 0; i < 6; i++){
             this.options = [
               this.random(this.min,this.max),

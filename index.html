@@ -6,64 +6,109 @@
     <title>999 Memory</title>
     <style>
 
-        #app div{
-            display:inline-block;
+        #app {
+            max-width: 960px;
+            margin: 0 auto;
+            box-sizing: border-box;
         }
-        #app p{
+
+        #app .hidden{
+            display: none;
+        }
+
+        #app h1, #app .settings {
             text-align: center;
         }
+
+        #app .options{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #app .options div{
+            box-sizing: border-box;
+            width: calc(100% / 3);
+            display: flex;
+            justify-content: center;
+        }
+
+        #app .buttons{
+            margin: 30px 0 0 0;
+            text-align: center;
+        }
+
+        #app .buttons .yes-button{
+            background-color: green;
+            border: 0px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        #app button.no_button
+        {
+            background-color: red;
+            border: 0px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+
     </style>
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="container">
 
-        <div class="settings">
+        <div class="row">
+            <div class="settings">
             <input type="number" min="1" max="999" v-model="min">
             <input type="number" min="1" max="999" v-model="max">
+        </div>
 
         </div>
-        <div class="num">
+        <div class="row num">
             <h1>{{choosen[0]}}</h1>
             <div class="hidden">
                 <h3>{{numbers[choosen[0]-1]?numbers[choosen[0]-1].name:''}}</h3>
                 <img :src="`photos/${choosen[0]}.jpg`" :alt="options['opt1']">
             </div>
         </div>
-        <div class="options">
-            <div id="opt1">
-                <img :src="`photos/${options[0]}.jpg`" :alt="options['opt1']">
-            </div>
+        <div class="row">
+            <div class="options">
+                <div id="opt1">
+                    <img v-on:click="check" :src="`photos/${options[0]}.jpg`" :alt="options[0]">
+                </div>
 
-            <div id="opt2">
-                <img :src="`photos/${options[1]}.jpg`" :alt="options['opt2']">
-            </div>
+                <div id="opt2">
+                    <img v-on:click="check" :src="`photos/${options[1]}.jpg`" :alt="options[1]">
+                </div>
 
-            <div id="opt3">
-                <img :src="`photos/${options[2]}.jpg`" :alt="options['opt3']">
-            </div>
+                <div id="opt3">
+                    <img v-on:click="check" :src="`photos/${options[2]}.jpg`" :alt="options[2]">
+                </div>
 
-            <div id="opt4">
-                <img :src="`photos/${options[3]}.jpg`" :alt="options['opt4']">
-            </div>
+                <div id="opt4">
+                    <img v-on:click="check" :src="`photos/${options[3]}.jpg`" :alt="options[3]">
+                </div>
 
-            <div id="opt5">
-                <img :src="`photos/${options[4]}.jpg`" :alt="options['opt5']">
-            </div>
+                <div id="opt5">
+                    <img v-on:click="check" :src="`photos/${options[4]}.jpg`" :alt="options[4]">
+                </div>
 
-            <div id="opt6">
-                <img :src="`photos/${options[5]}.jpg`" :alt="options['opt6']">
-            </div>
+                <div id="opt6">
+                    <img v-on:click="check" :src="`photos/${options[5]}.jpg`" :alt="options[5]">
+                </div>
 
+            </div>
         </div>
+        <div class="row">
         <div class="buttons">
             <button class="yes-button" v-on:click="yesHendler" >yeap {{win}}</button>
             <button class="no_button" v-on:click="noHendler" >nope {{err}}</button>
         </div>
+    </div>
 
 
 
     </div>
-    <script src="d3.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="index.js"></script>
 </body>
