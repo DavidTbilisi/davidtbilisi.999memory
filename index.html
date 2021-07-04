@@ -16,13 +16,17 @@
             display: none;
         }
 
-        #app h1, #app .settings {
+        #app h1, #app h3, #app .settings {
             text-align: center;
         }
 
         #app .options{
             display: flex;
             flex-wrap: wrap;
+        }
+
+        #app .options img{
+            cursor: pointer;
         }
 
         #app .options div{
@@ -37,18 +41,16 @@
             text-align: center;
         }
 
-        #app .buttons .yes-button{
+        #app .yes-button, #app .no_button{
             background-color: green;
             border: 0px;
             padding: 5px 10px;
             border-radius: 5px;
+            box-shadow: inset 0px 0px 14px -5px;
         }
-        #app button.no_button
+        #app .no_button
         {
             background-color: red;
-            border: 0px;
-            padding: 5px 10px;
-            border-radius: 5px;
         }
 
 
@@ -59,50 +61,30 @@
 
         <div class="row">
             <div class="settings">
-            <input type="number" min="1" max="999" v-model="min">
-            <input type="number" min="1" max="999" v-model="max">
+            <input v-on:change="again" type="number" min="1" max="999" v-model="min">
+            <input v-on:change="again" type="number" min="1" max="999" v-model="max">
         </div>
 
         </div>
         <div class="row num">
-            <h1>{{choosen[0]}}</h1>
-            <div class="hidden">
+            <h1 v-on:click="toggle">{{choosen[0]}}</h1>
+            <div :class="{hidden: hidden}" >
                 <h3>{{numbers[choosen[0]-1]?numbers[choosen[0]-1].name:''}}</h3>
-                <img :src="`photos/${choosen[0]}.jpg`" :alt="options['opt1']">
+                <!-- <img :src="`photos/${choosen[0]}.jpg`" :alt="options['opt1']"> -->
             </div>
         </div>
         <div class="row">
-            <div class="options">
-                <div id="opt1">
-                    <img v-on:click="check" :src="`photos/${options[0]}.jpg`" :alt="options[0]">
-                </div>
-
-                <div id="opt2">
-                    <img v-on:click="check" :src="`photos/${options[1]}.jpg`" :alt="options[1]">
-                </div>
-
-                <div id="opt3">
-                    <img v-on:click="check" :src="`photos/${options[2]}.jpg`" :alt="options[2]">
-                </div>
-
-                <div id="opt4">
-                    <img v-on:click="check" :src="`photos/${options[3]}.jpg`" :alt="options[3]">
-                </div>
-
-                <div id="opt5">
-                    <img v-on:click="check" :src="`photos/${options[4]}.jpg`" :alt="options[4]">
-                </div>
-
-                <div id="opt6">
-                    <img v-on:click="check" :src="`photos/${options[5]}.jpg`" :alt="options[5]">
+            <div class="options" >
+                <div v-for="(i,j) in options" :id="`opt${j+1}`">
+                    <img v-on:click="check" :src="`photos/${i}.jpg`" :title="`${options[j]}`" :alt="options[j]">
                 </div>
 
             </div>
         </div>
         <div class="row">
         <div class="buttons">
-            <button class="yes-button" v-on:click="yesHendler" >yeap {{win}}</button>
-            <button class="no_button" v-on:click="noHendler" >nope {{err}}</button>
+            <button class="yes-button" v-on:click="yesHendler" >Yeap {{win}}</button>
+            <button class="no_button" v-on:click="noHendler" >Nope {{err}}</button>
         </div>
     </div>
 

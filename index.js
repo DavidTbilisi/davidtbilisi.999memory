@@ -5024,7 +5024,7 @@ let data_arr = [
         choosen:[],
         err:0,
         win:0,
-
+        hidden: true
       },
       methods:{
         random(min, max) {
@@ -5046,17 +5046,19 @@ let data_arr = [
 
 
           if (event.target.alt == this.choosen[0]){
-            event.target.style.border = "2px solid green";
+            event.target.style.border = "10px solid green";
             setTimeout(() => {
               this.yesHendler()
             }, 500);
           } else {
             this.err++
-            event.target.style.border = "2px solid red";
+            event.target.style.border = "10px solid red";
           }
         },
-
-
+        toggle(event){
+          console.log(this.hidden)
+          this.hidden = !this.hidden;
+        },
         again(){
           document.querySelectorAll('img').forEach((el)=>{
             el.style.border = "0px"
