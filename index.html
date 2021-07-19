@@ -67,6 +67,30 @@
         #app #error-count {
             text-align: center;
         }
+
+        #app .wrong{
+            border:1px solid red;
+            position:relative;
+        }
+        #app .wrong::before{
+            display: inline-block;
+            position: absolute;
+            right:0;
+            top:0;
+            font-size: 50px;
+            z-index: 10;
+            content: "wrong 🚫";
+            width: 100%;
+            height: 100%;
+            background-color: red;
+
+        }
+        #app .right{
+            border:1px solid green;
+        }
+        #app .right::after{
+            content: "✔";
+        }
     </style>
 </head>
 

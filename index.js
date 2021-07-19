@@ -5029,14 +5029,19 @@ let data_arr = [
             return [this.options[random], random]
         },
         check(event){
+
           let choosen = this.choosen[0];
           let clicked = event.target.alt;
+
           if (clicked == choosen){
-            event.target.style.border = "10px solid green";
+            event.target.classList.add('right')
+
             setTimeout(() => {
               this.yesHendler()
             }, 500);
+
           } else {
+
             this.err++
 
             if (this.errors[choosen] !== undefined) {
@@ -5044,8 +5049,11 @@ let data_arr = [
             } else {
               this.errors[choosen] = [clicked]
             }
+
             this.sortErrors()
-            event.target.style.border = "10px solid red";
+
+            event.target.classList.add('wrong')
+
           }
         },
         toggle(event){
@@ -5060,20 +5068,17 @@ let data_arr = [
         },
         again(){
           document.querySelectorAll('img').forEach((el)=>{
-            el.style.border = "0px"
+            el.className = '';
           })
 
-
-          for (let i = 0; i < 6; i++){
-            this.options = [
-              this.random(this.min,this.max),
-              this.random(this.min,this.max),
-              this.random(this.min,this.max),
-              this.random(this.min,this.max),
-              this.random(this.min,this.max),
-              this.random(this.min,this.max),
-            ]
-          }
+          this.options = [
+            this.random(this.min,this.max),
+            this.random(this.min,this.max),
+            this.random(this.min,this.max),
+            this.random(this.min,this.max),
+            this.random(this.min,this.max),
+            this.random(this.min,this.max),
+          ]
           this.choosen = this.choose()
         },
 
