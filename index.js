@@ -5019,7 +5019,7 @@ let data_arr = [
         name: "999 Memory",
         numbers: data_arr,
         min: 1,
-        max:999,
+        max:30,
         options:[],
         choosen:[],
         err:0,
