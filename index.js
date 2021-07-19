@@ -5038,20 +5038,25 @@ let data_arr = [
             }, 500);
           } else {
             this.err++
+
             if (this.errors[choosen] !== undefined) {
               this.errors[choosen].push(clicked)
             } else {
               this.errors[choosen] = [clicked]
-                
-              
             }
-            
+            this.sortErrors()
             event.target.style.border = "10px solid red";
           }
         },
         toggle(event){
           console.log(this.hidden)
           this.hidden = !this.hidden;
+        },
+        sortErrors(){
+          const sortable = Object.entries(this.errors)
+                      .sort(([,a],[,b]) => b.length-a.length)
+                      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
+                      this.errors = sortable
         },
         again(){
           document.querySelectorAll('img').forEach((el)=>{
