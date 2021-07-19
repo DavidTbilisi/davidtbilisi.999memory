@@ -1,92 +1,94 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>999 Memory</title>
     <style>
-
         #app {
             max-width: 960px;
             margin: 0 auto;
             box-sizing: border-box;
         }
 
-        #app .hidden{
+        #app .hidden {
             display: none;
         }
 
-        #app h1, #app h3, #app .settings {
+        #app h1,
+        #app h3,
+        #app .settings {
             text-align: center;
         }
 
-        #app .options{
+        #app .options {
             display: flex;
             flex-wrap: wrap;
         }
 
-        #app .options img{
+        #app .options img {
             max-width: 150px;
-            width:100%;
+            width: 100%;
             cursor: pointer;
         }
 
-        #app .options div{
+        #app .options div {
             box-sizing: border-box;
             width: calc(100% / 3);
             display: flex;
             justify-content: space-around;
         }
 
-        #app .buttons{
+        #app .buttons {
             display: flex;
             justify-content: center;
-            position: absolute;
-            left:50%;
-            bottom:40px;
-            transform:translate(-50%,50%);
-            width:100vw;
+            margin-top: 50px;
             text-align: center;
         }
 
-        #app .yes-button, #app .no_button{
-            background-color: green;
+        #app .yes-button,
+        #app .no_button {
+            background-color: rgb(90, 143, 90);
             border: 0px;
             padding: 15px 30px;
             margin: 0 1vw;
             border-radius: 1px;
-            color:white;
-            border:1px solid rgba(128, 128, 128, 0.527);
+            color: white;
+            border: 1px solid rgba(128, 128, 128, 0.527);
             font-weight: bold;
             text-transform: uppercase;
         }
-        #app .no_button
-        {
-            background-color: red;
+
+        #app .no_button {
+            background-color: rgb(185, 93, 93);
         }
 
-
+        #app #error-count {
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <div id="app" class="container">
 
         <div class="row">
             <div class="settings">
-            <input v-on:change="again" type="number" min="1" max="999" v-model="min">
-            <input v-on:change="again" type="number" min="1" max="999" v-model="max">
-        </div>
+                <input v-on:change="again" type="number" min="1" max="999" v-model="min">
+                <input v-on:change="again" type="number" min="1" max="999" v-model="max">
+            </div>
 
         </div>
         <div class="row num">
             <h1 v-on:click="toggle">{{choosen[0]}}</h1>
-            <div :class="{hidden: hidden}" >
+            <div :class="{hidden: hidden}">
                 <h3>{{numbers[choosen[0]-1]?numbers[choosen[0]-1].name:''}}</h3>
-                
+
             </div>
         </div>
         <div class="row">
-            <div class="options" >
+            <div class="options">
                 <div v-for="(i,j) in options" :id="`opt${j+1}`">
                     <img v-on:click="check" :src="`photos/${i}.jpg`" :title="`${options[j]}`" :alt="options[j]">
                 </div>
@@ -94,16 +96,22 @@
             </div>
         </div>
         <div class="row">
-        <div class="buttons">
-            <button class="yes-button" v-on:click="yesHendler" >Yeap <span>{{win}}</span></button>
-            <button class="no_button" v-on:click="noHendler" >Nope <span>{{err}}</span></button>
+            <div class="buttons">
+                <button class="yes-button" v-on:click="yesHendler">Yeap: <span>{{win}}</span></button>
+                <button class="no_button" v-on:click="noHendler">Nope: <span>{{err}}</span></button>
+            </div>
         </div>
-    </div>
+        <div id="error-count" v-if="Object.keys(errors).length !== 0">
 
-
+            <h3>Error Count Details</h3>
+            <p v-for="(k,v) in errors" >
+                {{v}} - {{k.length}}
+            </p>
+        </div>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="index.js"></script>
 </body>
+
 </html>

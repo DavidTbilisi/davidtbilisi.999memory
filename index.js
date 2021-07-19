@@ -4996,21 +4996,6 @@ let data_arr = [
     }
   ]
   
-// let div = d3.select("#app")
-//   .selectAll("div")
-//   .data(data_arr)
-//   .enter()
-//   .append("div")
-//   .attr("id", (d,i)=>{return 'ident'+(i+1)})
-
-//   div.append("img")
-//   .attr('src', (d)=>{return d.url})
-//   .attr("alt", (d)=>d.name)
-//   .attr("title", (d)=>d.name)
-
-//   div.append("p")
-//   .text((d)=>d.name)
-
 
 
   new Vue({
@@ -5022,6 +5007,7 @@ let data_arr = [
         max:30,
         options:[],
         choosen:[],
+        errors:{},
         err:0,
         win:0,
         hidden: true
@@ -5043,15 +5029,23 @@ let data_arr = [
             return [this.options[random], random]
         },
         check(event){
-
-
-          if (event.target.alt == this.choosen[0]){
+          let choosen = this.choosen[0];
+          let clicked = event.target.alt;
+          if (clicked == choosen){
             event.target.style.border = "10px solid green";
             setTimeout(() => {
               this.yesHendler()
             }, 500);
           } else {
             this.err++
+            if (this.errors[choosen] !== undefined) {
+              this.errors[choosen].push(clicked)
+            } else {
+              this.errors[choosen] = [clicked]
+                
+              
+            }
+            
             event.target.style.border = "10px solid red";
           }
         },
