@@ -5031,10 +5031,10 @@ let data_arr = [
         check(event){
 
           let choosen = this.choosen[0];
-          let clicked = event.target.alt;
-
+          let clicked = event.target.parentNode.dataset.numb;
+          let parent = event.target.parentNode;
           if (clicked == choosen){
-            event.target.classList.add('right')
+              parent.classList.add('right')
 
             setTimeout(() => {
               this.yesHendler()
@@ -5052,7 +5052,7 @@ let data_arr = [
 
             this.sortErrors()
 
-            event.target.classList.add('wrong')
+            parent.classList.add('wrong')
 
           }
         },
@@ -5067,8 +5067,8 @@ let data_arr = [
                       this.errors = sortable
         },
         again(){
-          document.querySelectorAll('img').forEach((el)=>{
-            el.className = '';
+          document.querySelectorAll('.check').forEach((el)=>{
+            el.className = 'check';
           })
 
           this.options = [

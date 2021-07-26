@@ -1,0 +1,93 @@
+#app {
+    max-width: 960px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+#app .hidden {
+    display: none;
+}
+
+#app h1,
+#app h3,
+#app .settings {
+    text-align: center;
+}
+
+#app .options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#app .options img {
+    max-width: 150px;
+    width: 100%;
+    cursor: pointer;
+}
+
+#app .options div {
+    box-sizing: border-box;
+    width: calc(100% / 3);
+    display: flex;
+    justify-content: space-around;
+}
+
+#app .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#app .yes-button,
+#app .no_button {
+    background-color: rgb(90, 143, 90);
+    border: 0px;
+    padding: 15px 30px;
+    margin: 0 1vw;
+    border-radius: 1px;
+    color: white;
+    border: 1px solid rgba(128, 128, 128, 0.527);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#app .no_button {
+    background-color: rgb(185, 93, 93);
+}
+
+#app #error-count {
+    text-align: center;
+}
+
+#app .wrong{
+    border:1px solid red;
+    position:relative;
+}
+#app .wrong::before {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 50px;
+    z-index: 10;
+    content: "🚫";
+    width: 100%;
+    height: 100%;
+    transform: translate(-23%, -22%);
+    align-content: center;
+}
+#app .right{
+    border:1px solid green;
+    position:relative;
+
+}
+#app .right::after{
+    content: "✔";
+    position: absolute;
+    bottom: 0%;
+    left: 30%;
+    font-size: 110px;
+    z-index: 234;
+    color: #5eff42;
+}
