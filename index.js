@@ -5090,6 +5090,17 @@ let data_arr = [
           this.err++;
           this.again();
         },
+
+        getToday(){
+          var start_date = new Date("07/16/2021");
+          var current_date = new Date();
+          var diff_date = current_date.getTime() - start_date.getTime();
+              diff_date = Math.round(diff_date / (1000 * 3600 * 24))
+          var diff_pad = this.pad(diff_date,3)
+          let color = {"კვირა":'წითელი',"ორშაბათი":'სტაფილოსფერი',"სამშაბათი":'ყვითელი', "ოთხშაბათი":'მწვანე',"ხუთშაბათი":'ცისფერი',"პარასკევი":'ლურჯი',"შაბათი":'იასმნისფერი'}
+          return {day: diff_date, date: moment().format("LLL"), img:diff_pad, color:color[moment().format("dddd")] };
+
+        }
       },
       mounted(){
         

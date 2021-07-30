@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>999 Memory</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ka.min.js" integrity="sha512-Yl06GD8qIvN+hKNgBHL7oTTb4B71tnFbfrK0aGPdih/khw36f4LUr/CDYu1ZA+BnFBTjj/EdkSbFxO77NoDTFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="app" class="container">
+                    <img
+                            :src="`photos/${getToday().img}.jpg`"
+                            :title="`${options[j]}`"
+                            :alt="options[j]"
+                    >
+                  <p>{{numbers[getToday().day-1].name}}</p>
+                  {{getToday().date}}
+                  {{getToday().color}}
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
