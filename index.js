@@ -5119,10 +5119,18 @@ new Vue({
             }
 
 
+            let colorCodes = {
+                "კვირა": {name:'red', bg:'#ca1717', text: 'white'},
+                "ორშაბათი": {name:'orange', bg:'#f17a00', text: 'white'},
+                "სამშაბათი": {name:'yellow', bg:'#ffe500', text: 'black'},
+                "ოთხშაბათი": {name:'green', bg:'green', text: 'white'},
+                "ხუთშაბათი": {name:'lightblue', bg:'#7da7ab', text: 'white'},
+                "პარასკევი": {name:'blue', bg:'#1010a9', text: 'white'},
+                "შაბათი": {name:'violet', bg:'#9c409c', text: 'white'},
+            }
+
             this.diary.color = color[this.diary.now.format("dddd")];
-            // this.diary.date = moment().format("LLL");
-            // this.diary.img = diff_pad;
-            // this.diary.day = diff_date;
+  
         }
     },
     mounted() {
