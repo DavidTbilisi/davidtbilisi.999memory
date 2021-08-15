@@ -17,24 +17,34 @@
 </head>
 
 <body>
-    <div id="app" class="container">
-        <p>{{numbers[diary.day-1].name}}</p>
-        <p>{{diary.now.format("LL")}}</p>
-        <img :src="`photos/${diary.img}.jpg`">
-        <div :style="{
-        backgroundColor:diary.color,
-        width:100+'px',
-        height:100+'px',
-        display:'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-        }">
-          {{diary.color}}
+    <div id="app" class="uk-container uk-section">
+            <div class="uk-grid uk-background-default">
+                <div class="uk-flex uk-flex-center uk-flex-middle uk-flex-column">      
+                    <p>{{numbers[diary.day-1].name}}</p>
+                    <p>{{diary.now.format("dddd, LL")}}</p>
+                </div>
+                <div class="uk-flex uk-flex-center uk-flex-middle">
+                    <div :style="{
+                        backgroundColor:diary.color,
+                        width:100+'px',
+                        height:100+'px',
+                        display:'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                        }">
+                        {{diary.color}}
+                    </div>
+                </div>
+                <div>
+                    <img :src="`photos/${diary.img}.jpg`">
+                </div>
+            </div>
+    
+        <div class="uk-text-center">
+            <a href="javascript:void(0)" @click="back()" class="uk-icon-button" uk-icon="arrow-left"></a>
+            <a href="javascript:void(0)" @click="forward()" class="uk-icon-button" uk-icon="arrow-right"></a>
         </div>
-
-
-        <a href="javascript:void(0)" @click="back()" class="uk-icon-button" uk-icon="arrow-left"></a>
-        <a href="javascript:void(0)" @click="forward()" class="uk-icon-button" uk-icon="arrow-right"></a>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <script src="index.js"></script>
