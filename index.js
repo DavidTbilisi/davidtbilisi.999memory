@@ -5003,13 +5003,14 @@ new Vue({
         name: "999 Memory",
         numbers: data_arr,
         min: 1,
-        max: 30,
+        max: 40,
         options: [],
         choosen: [],
         errors: {},
         err: 0,
         win: 0,
         hidden: true,
+        learn:[],
         diary:{
             start: moment('07/16/2021','MM/DD/YYYY'),
             now: moment(),
@@ -5073,6 +5074,10 @@ new Vue({
             this.errors = sortable
         },
         again() {
+            this.min = parseInt(this.min);
+            this.max = parseInt(this.max);
+            this.learnfn();
+
             document.querySelectorAll('.check').forEach((el) => {
                 el.className = 'check';
             })
@@ -5085,7 +5090,7 @@ new Vue({
                 this.random(this.min, this.max),
                 this.random(this.min, this.max),
             ]
-            this.choosen = this.choose()
+            this.choosen = this.choose();
         },
 
         yesHendler() {
@@ -5104,20 +5109,18 @@ new Vue({
             this.diary.now = this.diary.now.add(1, 'days');
             this.getToday();
         },
+
+        learnfn(){
+            this.learn = [];
+            for (let index = this.min; index <= this.max; index++) {
+                this.learn.push({img:this.pad(index, 3), number: index});
+            }
+        },
+
+
         getToday() {
             this.diary.day = this.diary.now.diff(this.diary.start, 'days')+1
             this.diary.img = this.pad(this.diary.day,3)
-
-            let color = {
-                "კვირა": 'red',
-                "ორშაბათი": 'orange',
-                "სამშაბათი": 'yellow',
-                "ოთხშაბათი": 'green',
-                "ხუთშაბათი": 'lightblue',
-                "პარასკევი": 'blue',
-                "შაბათი": 'violet'
-            }
-
 
             let colorCodes = {
                 "კვირა": {name:'red', bg:'#ca1717', text: 'white'},
@@ -5129,12 +5132,13 @@ new Vue({
                 "შაბათი": {name:'violet', bg:'#9c409c', text: 'white'},
             }
 
-            this.diary.color = color[this.diary.now.format("dddd")];
+            this.diary.color = colorCodes[this.diary.now.format("dddd")];
   
         }
     },
     mounted() {
         this.again();
         this.getToday();
+        this.learnfn();
     }
 })

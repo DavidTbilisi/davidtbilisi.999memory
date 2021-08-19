@@ -25,14 +25,15 @@
                 </div>
                 <div class="uk-flex uk-flex-center uk-flex-middle">
                     <div :style="{
-                        backgroundColor:diary.color,
+                        backgroundColor:diary.color.bg,
+                        color:diary.color.text,
                         width:100+'px',
                         height:100+'px',
                         display:'flex',
                         justifyContent: 'center',
                         alignItems: 'center'
                         }">
-                        {{diary.color}}
+                        {{diary.color.name}}
                     </div>
                 </div>
                 <div>
