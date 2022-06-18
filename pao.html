@@ -739,10 +739,13 @@
 
     number.addEventListener("change", function () {
         let chunks = strChunks(this.value);
-        answer.innerHTML = `${pao[chunks[0]].PERSON} ${pao[chunks[1]].ACTION} ${pao[chunks[2]].OBJECT}`
+        let person = parseInt(chunks[0]??"00");
+        let action = parseInt(chunks[1]??"00");
+        let object = parseInt(chunks[2]??"00");
 
-        console.log(strChunks(this.value))
+        // console.log(pao[person])
 
+        answer.innerHTML = `${pao[person].PERSON} ${pao[action].ACTION} ${pao[object].OBJECT}`
     })
 
 
