@@ -707,7 +707,7 @@ new Vue({
         name: "PAO Memory",
         numbers: pao,
         min: 1,
-        max: 30,
+        max: 50,
         options: [],
         choosen: [],
         errors: {},
